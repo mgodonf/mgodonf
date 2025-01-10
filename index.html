@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Maintenance!</title>
+  <title>Cyber Security Bootcamp</title>
   <style>
     *,
     *::before,
@@ -31,40 +31,63 @@
       text-align: center;
       color: #fff;
       z-index: 10;
+      animation: fadeIn 1.5s ease-in-out;
     }
 
     .center-content img {
-      width: 100px;
+      width: 120px;
       margin-bottom: 20px;
     }
 
     .center-content h1 {
       margin: 0;
-      font-size: 24px;
+      font-size: 28px;
       font-weight: bold;
-      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
     }
 
     .center-content p {
-      margin: 5px 0;
-      font-size: 16px;
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+      margin: 10px 0;
+      font-size: 18px;
+      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
     }
 
     .center-content .button {
       display: inline-block;
       margin-top: 20px;
-      padding: 10px 20px;
-      font-size: 16px;
-      color: #000;
-      background-color: #fff;
+      padding: 15px 30px;
+      font-size: 18px;
+      color: #fff;
+      background: linear-gradient(90deg, #a60000, #5a0000);
       text-decoration: none;
-      border-radius: 5px;
+      border-radius: 8px;
       font-weight: bold;
+      box-shadow: 0 4px 10px rgba(166, 0, 0, 0.6);
+      transition: all 0.3s ease;
     }
 
     .center-content .button:hover {
-      background-color: #f0f0f0;
+      background: linear-gradient(90deg, #5a0000, #a60000);
+      box-shadow: 0 8px 20px rgba(166, 0, 0, 0.9);
+    }
+
+    .center-content .button.secondary {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 15px 30px;
+      font-size: 18px;
+      color: #a60000;
+      background: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+      transition: all 0.3s ease;
+    }
+
+    .center-content .button.secondary:hover {
+      background: #f2f2f2;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.8);
     }
 
     .footer {
@@ -75,13 +98,24 @@
       font-size: 14px;
       color: #fff;
       z-index: 10;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
     }
 
     .canvas {
       position: absolute;
       top: 0;
       left: 0;
-      background: linear-gradient(to bottom, #262530, #312);
+      background: linear-gradient(to bottom, #1a0000, #330000);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
     }
   </style>
 </head>
@@ -91,7 +125,10 @@
     <img src="logo.png" alt="Logo">
     <h1>Maintenance! Sedang diperbaiki guys!</h1>
     <p>Pendaftaran <strong>BATCH 13</strong> masih dibuka!</p>
-    <a href="https://wa.me/6285213806830" class="button">Daftar Disini</a>
+    <p>Bootcamp Cyber Security Engineering</p>
+    <a href="https://wa.me/6285213806830" class="button">Daftar Sekarang</a>
+    <a href="https://docs.google.com/document/d/11BeJbeH3_ECh_GWPjgjCvaY8n7n5JqQl/edit" class="button secondary">Lihat
+      Silabus</a>
   </div>
   <div class="footer">
     www.merdekasiber.com
@@ -107,7 +144,7 @@
         mousePos,
         points = [],
         maxDist = 200,
-        colour = "255,30,70";
+        colour = "200, 0, 0";
 
       function init() {
         canvas = document.getElementById("canvas");
