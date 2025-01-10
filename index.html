@@ -1,118 +1,215 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maintenance</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: linear-gradient(135deg, #ff7e5f, #feb47b);
-            color: #fff;
-            text-align: center;
-            overflow: hidden;
-        }
-        .container {
-            max-width: 600px;
-            animation: fadeIn 2s ease-in-out;
-        }
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-            animation: bounce 1.5s infinite;
-        }
-        p {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-        }
-        .highlight {
-            font-weight: bold;
-            color: #ffe259;
-        }
-        a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 0.5rem 1rem;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 5px;
-            transition: background 0.3s ease;
-        }
-        a:hover {
-            background: rgba(0, 0, 0, 0.5);
-        }
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
-        }
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-20px);
-            }
-            60% {
-                transform: translateY(-10px);
-            }
-        }
-        .background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-        }
-        .background span {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            animation: float 5s infinite ease-in-out;
-        }
-        @keyframes float {
-            0% {
-                transform: translateY(0);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-1000px);
-                opacity: 0;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Canvas</title>
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      font-family: "Segoe UI", Helvetica, sans-serif;
+    }
+
+    body {
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+      color: white;
+    }
+
+    .center-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: #fff;
+      z-index: 10;
+    }
+
+    .center-content img {
+      width: 100px;
+      margin-bottom: 20px;
+    }
+
+    .center-content h1 {
+      margin: 0;
+      font-size: 24px;
+      font-weight: bold;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    }
+
+    .center-content p {
+      margin: 5px 0;
+      font-size: 16px;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    .center-content .button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      color: #000;
+      background-color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    .center-content .button:hover {
+      background-color: #f0f0f0;
+    }
+
+    .footer {
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      text-align: center;
+      font-size: 14px;
+      color: #fff;
+      z-index: 10;
+    }
+
+    .canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: linear-gradient(to bottom, #262530, #312);
+    }
+  </style>
 </head>
+
 <body>
-    <div class="background">
-        <span style="left: 10%; animation-duration: 6s; animation-delay: 0s;"></span>
-        <span style="left: 20%; animation-duration: 8s; animation-delay: 2s;"></span>
-        <span style="left: 30%; animation-duration: 5s; animation-delay: 4s;"></span>
-        <span style="left: 40%; animation-duration: 7s; animation-delay: 6s;"></span>
-        <span style="left: 50%; animation-duration: 6s; animation-delay: 8s;"></span>
-        <span style="left: 60%; animation-duration: 5s; animation-delay: 10s;"></span>
-        <span style="left: 70%; animation-duration: 9s; animation-delay: 12s;"></span>
-        <span style="left: 80%; animation-duration: 6s; animation-delay: 14s;"></span>
-        <span style="left: 90%; animation-duration: 8s; animation-delay: 16s;"></span>
-    </div>
-    <div class="container">
-<h2> Maintenance! sedang diperbaiki guys!</h2>
-        <h1>Wait for it...</h1>
-        <p>It&#39;s gonna be <span class="highlight">lege... ndary, legendary!</span></p>
-        <p>Pendaftaran Bootcamp Merdeka Siber dialihkan ke <br><br><a href="https://wa.me/6285213806830" target="_blank">+62 852-1380-6830 (WhatsApp)</a></p>
-    </div>
+  <div class="center-content">
+    <img src="logo.png" alt="Logo">
+    <h1>Maintenance! Sedang diperbaiki guys!</h1>
+    <p>Wait for it...<br>It's gonna be <strong>lege... ndary, legendary!</strong></p>
+    <a href="https://wa.me/6285213806830" class="button">Daftar Disini</a>
+  </div>
+  <div class="footer">
+    www.merdekasiber.com
+  </div>
+  <canvas id="canvas" class="canvas"></canvas>
+  <script>
+    //IIFE
+    (function () {
+      'use strict';
+
+      var canvas,
+        ctx,
+        mousePos,
+        points = [],
+        maxDist = 200,
+        colour = "255,30,70";
+
+      function init() {
+        canvas = document.getElementById("canvas");
+        ctx = canvas.getContext("2d");
+        canvas.addEventListener("mousemove", function (evt) {
+          mousePos = getMousePos(canvas, evt);
+        });
+        resizeCanvas();
+        generatePoints(80);
+        pointFun();
+        setInterval(pointFun, 16);
+        window.addEventListener('resize', resizeCanvas, false);
+      }
+
+      function point() {
+        this.x = (Math.random() * (canvas.width + maxDist)) - (maxDist / 2);
+        this.y = (Math.random() * (canvas.height + maxDist)) - (maxDist / 2);
+        this.vx = (Math.random() * 1) - .5;
+        this.vy = (Math.random() * 1) - .5;
+        this.dia = Math.random() * 3 + 1;
+        points.push(this);
+      }
+
+      function generatePoints(amount) {
+        for (var i = 0; i < amount; i++) {
+          new point();
+        }
+      }
+
+      function draw(obj) {
+        ctx.beginPath();
+        ctx.fillStyle = "rgb(" + colour + ")";
+        if (obj.dia) {
+          ctx.arc(obj.x, obj.y, obj.dia, 0, 2 * Math.PI);
+        } else {
+          ctx.arc(obj.x, obj.y, 2, 0, 2 * Math.PI);
+        }
+        ctx.closePath();
+        ctx.fill();
+      }
+
+      function update(obj) {
+        obj.x += obj.vx;
+        obj.y += obj.vy;
+        if (obj.x > canvas.width + (maxDist / 2)) {
+          obj.x = -(maxDist / 2);
+        } else if (obj.x < -(maxDist / 2)) {
+          obj.x = canvas.width + (maxDist / 2);
+        }
+        if (obj.y > canvas.height + (maxDist / 2)) {
+          obj.y = -(maxDist / 2);
+        } else if (obj.y < -(maxDist / 2)) {
+          obj.y = canvas.height + (maxDist / 2);
+        }
+      }
+
+      function pointFun() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        if (mousePos) {
+          collision(mousePos, maxDist * 2);
+          draw(mousePos);
+        }
+        for (var i = 0; i < points.length; i++) {
+          collision(points[i], maxDist);
+          draw(points[i]);
+          update(points[i]);
+        }
+      }
+
+      function collision(obj, dist) {
+        for (var i = 0; i < points.length; i++) {
+          if (obj !== points[i]) {
+            var temp = Math.sqrt(Math.pow((obj.x - points[i].x), 2) + Math.pow((obj.y - points[i].y), 2));
+            if (temp < dist) {
+              ctx.beginPath();
+              ctx.moveTo(obj.x, obj.y);
+              ctx.strokeStyle = "rgba(" + colour + "," + .8 * Math.pow((dist - temp) / dist, 5) + ")";
+              ctx.lineTo(points[i].x, points[i].y);
+              ctx.closePath();
+              ctx.stroke();
+            }
+          }
+        }
+      }
+
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        pointFun();
+      }
+
+      function getMousePos(cvs, evt) {
+        var rect = cvs.getBoundingClientRect();
+        return {
+          x: evt.clientX - rect.left,
+          y: evt.clientY - rect.top
+        };
+      }
+
+      document.addEventListener('DOMContentLoaded', init, false);
+    })();
+  </script>
 </body>
+
 </html>
